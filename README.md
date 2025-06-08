@@ -3,7 +3,7 @@
 ## 🎯 Objective:
 To analyze and predict the occurrence and severity of forest fires in Algeria using meteorological and environmental data from the Algerian Forest Fires dataset.
 
-- Create a virtual enviroment
+- Create a virtual enviroments
   
    '''bash
     python3
