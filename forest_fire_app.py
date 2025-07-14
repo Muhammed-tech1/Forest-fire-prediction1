@@ -4,6 +4,25 @@ import joblib
 
 model = joblib.load("forest_fire.joblib")
 st.set_page_config(page_title="Forest Fire Prediction", layout="centered")
+
+# Add background image using CSS
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-image: url("https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
+
 st.title("🌲 Forest Fire Prediction App")
 st.write("Enter environmental and time-based conditions below to check fire risk.")
 
