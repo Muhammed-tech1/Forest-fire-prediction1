@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd 
 import joblib
 
-model = joblib.load("../model/forest_fire.joblib")
+model = joblib.load("forest_fire.joblib")
 st.set_page_config(page_title="Forest Fire Prediction", layout="centered")
 st.title("🌲 Forest Fire Prediction App")
 st.write("Enter environmental and time-based conditions below to check fire risk.")
