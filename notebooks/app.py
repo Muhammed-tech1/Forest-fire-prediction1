@@ -1,0 +1,54 @@
+import streamlit as st
+import pandas as pd 
+import joblib
+
+model = joblib.load("../model/forest_fire.joblib")
+st.set_page_config(page_title="Forest Fire Prediction", layout="centered")
+st.title("🌲 Forest Fire Prediction App")
+st.write("Enter environmental and time-based conditions below to check fire risk.")
+
+# Input form
+with st.form("fire_form"):
+    DAY = st.number_input("Day", min_value=1, max_value=31)
+    MONTH = st.number_input("Month", min_value=1, max_value=12)
+    YEAR = st.number_input("Year", min_value=1990, max_value=2100)
+    TEMPERATURE = st.number_input("Temperature (°C)", min_value=-10.0, max_value=50.0, step=0.1)
+    RH = st.number_input("Relative Humidity (%)", min_value=0.0, max_value=100.0, step=0.5)
+    WS = st.number_input("Wind Speed (km/h)", min_value=0.0, max_value=100.0, step=0.5)
+    FFMC = st.number_input("FFMC", min_value=0.0, max_value=150.0)
+    DMC = st.number_input("DMC", min_value=0.0, max_value=300.0)
+    DC = st.number_input("DC", min_value=0.0, max_value=1000.0)
+    ISI = st.number_input("ISI", min_value=0.0, max_value=100.0)
+    BUI = st.number_input("BUI", min_value=0.0, max_value=300.0)
+    FWI = st.number_input("FWI", min_value=0.0, max_value=100.0)
+    REGION = st.selectbox("Region", [1, 2])  # assuming 1 = Bejaia, 2 = Sidi-Bel Abbes
+
+    submitted = st.form_submit_button("Predict Fire Risk")
+
+if submitted:
+    # Prepare input
+    input_df = pd.DataFrame([{
+        "DAY": DAY,
+        "MONTH": MONTH,
+        "YEAR": YEAR,
+        "TEMPERATURE": TEMPERATURE,
+        "RH": RH,
+        "WS": WS,
+        "FFMC": FFMC,
+        "DMC": DMC,
+        "DC": DC,
+        "ISI": ISI,
+        "BUI": BUI,
+        "FWI": FWI,
+        "REGION": REGION
+    }])
+
+    # Predict
+    prediction = model.predict(input_df)[0]
+
+    if prediction == 1:
+        st.error("🔥 High Risk: Forest Fire Likely!")
+    else:
+        st.success("✅ Low Risk: No Fire Predicted.")
+
+ 
