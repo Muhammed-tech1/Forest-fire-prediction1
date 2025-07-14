@@ -18,6 +18,7 @@ with st.form("fire_form"):
     FFMC = st.number_input("FFMC", min_value=0.0, max_value=150.0)
     DMC = st.number_input("DMC", min_value=0.0, max_value=300.0)
     DC = st.number_input("DC", min_value=0.0, max_value=1000.0)
+    RAIN = st.number_input("Rain", min_value=0.0, max_value=0.182265)
     ISI = st.number_input("ISI", min_value=0.0, max_value=100.0)
     BUI = st.number_input("BUI", min_value=0.0, max_value=300.0)
     FWI = st.number_input("FWI", min_value=0.0, max_value=100.0)
@@ -37,6 +38,7 @@ if submitted:
         "FFMC": FFMC,
         "DMC": DMC,
         "DC": DC,
+        "RAIN": RAIN,
         "ISI": ISI,
         "BUI": BUI,
         "FWI": FWI,
