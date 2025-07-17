@@ -41,7 +41,7 @@ with st.form("fire_form"):
     ISI = st.number_input("ISI", min_value=0.0, max_value=100.0)
     BUI = st.number_input("BUI", min_value=0.0, max_value=300.0)
     FWI = st.number_input("FWI", min_value=0.0, max_value=100.0)
-    REGION = st.selectbox("Region", [1, 2])  # assuming 1 = Bejaia, 2 = Sidi-Bel Abbes
+    REGION = st.selectbox("Region", [0, 1])  #  0 = Bejaia, 1 = Sidi-Bel Abbes
 
     submitted = st.form_submit_button("Predict Fire Risk")
 
